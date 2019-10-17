@@ -667,7 +667,6 @@ def EffectSizeDataFramePlotter(EffectSizeDataFrame, **plot_kwargs):
                              **redraw_axes_kwargs)
 
 
-    else:
         # For Cumming Plots only.
 
         # Set custom contrast_ylim, if it was specified.
