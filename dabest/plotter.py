@@ -260,45 +260,46 @@ def EffectSizeDataFramePlotter(EffectSizeDataFrame, **plot_kwargs):
 
     width_ratios_ga = [2.5, 1]
     h_space_cummings = 0.3
-    if plot_kwargs["ax"] is not None:
-        # New in v0.2.6.
-        # Use inset axes to create the estimation plot inside a single axes.
-        # Author: Adam L Nekimken. (PR #73)
-        inset_contrast = True
-        rawdata_axes = plot_kwargs["ax"]
-        ax_position = rawdata_axes.get_position()  # [[x0, y0], [x1, y1]]
-        
-        fig = rawdata_axes.get_figure()
-        
-        if float_contrast is True:
-            axins = rawdata_axes.inset_axes(
-                    [1, 0,
-                     width_ratios_ga[1]/width_ratios_ga[0], 1])
-            rawdata_axes.set_position(  # [l, b, w, h]
-                    [ax_position.x0,
-                     ax_position.y0,
-                     (ax_position.x1 - ax_position.x0) * (width_ratios_ga[0] /
-                                                         sum(width_ratios_ga)),
-                     (ax_position.y1 - ax_position.y0)])
+    if plot_kwargs["ax"] is None:
+        plot_kwargs["ax"] = plt.gca()
+    # New in v0.2.6.
+    # Use inset axes to create the estimation plot inside a single axes.
+    # Author: Adam L Nekimken. (PR #73)
+    inset_contrast = True
+    rawdata_axes = plot_kwargs["ax"]
+    ax_position = rawdata_axes.get_position()  # [[x0, y0], [x1, y1]]
 
-            contrast_axes = axins
+    fig = rawdata_axes.get_figure()
 
-        else:
-            axins = rawdata_axes.inset_axes([0, -1 - h_space_cummings, 1, 1])
-            plot_height = ((ax_position.y1 - ax_position.y0) /
-                           (2 + h_space_cummings))
-            rawdata_axes.set_position(
-                    [ax_position.x0,
-                     ax_position.y0 + (1 + h_space_cummings) * plot_height,
-                     (ax_position.x1 - ax_position.x0),
-                     plot_height])
+    if float_contrast is True:
+        axins = rawdata_axes.inset_axes(
+                [1, 0,
+                 width_ratios_ga[1]/width_ratios_ga[0], 1])
+        rawdata_axes.set_position(  # [l, b, w, h]
+                [ax_position.x0,
+                 ax_position.y0,
+                 (ax_position.x1 - ax_position.x0) * (width_ratios_ga[0] /
+                                                     sum(width_ratios_ga)),
+                 (ax_position.y1 - ax_position.y0)])
 
-            # If the contrast axes are NOT floating, create lists to store
-            # raw ylims and raw tick intervals, so that I can normalize
-            # their ylims later.
-            contrast_ax_ylim_low = list()
-            contrast_ax_ylim_high = list()
-            contrast_ax_ylim_tickintervals = list()
+        contrast_axes = axins
+
+        # else:
+        #     axins = rawdata_axes.inset_axes([0, -1 - h_space_cummings, 1, 1])
+        #     plot_height = ((ax_position.y1 - ax_position.y0) /
+        #                    (2 + h_space_cummings))
+        #     rawdata_axes.set_position(
+        #             [ax_position.x0,
+        #              ax_position.y0 + (1 + h_space_cummings) * plot_height,
+        #              (ax_position.x1 - ax_position.x0),
+        #              plot_height])
+        #
+        #     # If the contrast axes are NOT floating, create lists to store
+        #     # raw ylims and raw tick intervals, so that I can normalize
+        #     # their ylims later.
+        #     contrast_ax_ylim_low = list()
+        #     contrast_ax_ylim_high = list()
+        #     contrast_ax_ylim_tickintervals = list()
         contrast_axes = axins
         rawdata_axes.contrast_axes = axins
 
