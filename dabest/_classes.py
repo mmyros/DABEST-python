@@ -229,7 +229,7 @@ class Dabest(object):
             control_name = current_tuple[0]
 
             for ix, test_name in enumerate(current_tuple[1:]):
-                comparisons.append("{} minus {}".format(test_name, control_name))
+                comparisons.append('')#("{} minus {}".format(test_name, control_name))
 
         for j, g in enumerate(comparisons):
             out.append("{}. {}".format(j+1, g))
