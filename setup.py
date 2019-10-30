@@ -41,7 +41,7 @@ if __name__ == "__main__":
         install_requires=[
             'numpy~=1.15',
             'scipy~=1.2',
-            'pandas==0.24',
+            'pandas',
             
             'matplotlib~=3.0',
             'seaborn~=0.9'
