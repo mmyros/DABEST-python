@@ -641,11 +641,11 @@ def EffectSizeDataFramePlotter(EffectSizeDataFrame, **plot_kwargs):
 
             xlimlow, xlimhigh = axx.get_xlim()
 
-            # Draw reference line.
-            axx.hlines(ref,            # y-coordinates
-                       0, xlimhigh,  # x-coordinates, start and end.
-                       **reflines_kwargs)
-                        
+            # # Draw reference line.
+            # axx.hlines(ref,            # y-coordinates
+            #            0, xlimhigh,  # x-coordinates, start and end.
+            #            **reflines_kwargs)
+            import pdb;pdb.set_trace()
             # Draw effect size line.
             axx.hlines(diff, effsize_line_start, xlimhigh,
                        **reflines_kwargs)
