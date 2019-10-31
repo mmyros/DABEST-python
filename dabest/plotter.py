@@ -130,7 +130,7 @@ def EffectSizeDataFramePlotter(EffectSizeDataFrame, **plot_kwargs):
     if plot_kwargs["slopegraph_kwargs"] is None:
         slopegraph_kwargs = default_slopegraph_kwargs
     else:
-        slopegraph_kwargs = merge_two_dicts(slopegraph_kwargs,
+        slopegraph_kwargs = merge_two_dicts(default_slopegraph_kwargs,
                                             plot_kwargs["slopegraph_kwargs"])
 
 
@@ -524,18 +524,18 @@ def EffectSizeDataFramePlotter(EffectSizeDataFrame, **plot_kwargs):
         legend_handles_unique = (pd.Series(legend_handles).loc[unique_idx]).tolist()
 
         if len(legend_handles_unique) > 0:
-            if float_contrast is True:
-                axes_with_legend = contrast_axes
-                if show_pairs is True:
-                    bta = (1.75, 1.02)
-                else:
-                    bta = (1.5, 1.02)
+            # if float_contrast is True:
+            #     axes_with_legend = contrast_axes
+            #     if show_pairs is True:
+            #         bta = (1.75, 1.02)
+            #     else:
+            #         bta = (1.5, 1.02)
+            # else:
+            axes_with_legend = rawdata_axes
+            if show_pairs is True:
+                bta = (1.02, 1.)
             else:
-                axes_with_legend = rawdata_axes
-                if show_pairs is True:
-                    bta = (1.02, 1.)
-                else:
-                    bta = (1.,1.)
+                bta = (1.,1.)
             leg = axes_with_legend.legend(legend_handles_unique,
                                           legend_labels_unique,
                                           bbox_to_anchor=bta,
