@@ -230,6 +230,8 @@ class Dabest(object):
 
             for ix, test_name in enumerate(current_tuple[1:]):
                 comparisons.append('')#("{} minus {}".format(test_name, control_name))
+        import pdb;pdb.set_trace()
+
 
         for j, g in enumerate(comparisons):
             out.append("{}. {}".format(j+1, g))
