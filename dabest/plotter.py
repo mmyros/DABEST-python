@@ -498,7 +498,7 @@ def EffectSizeDataFramePlotter(EffectSizeDataFrame, **plot_kwargs):
                            color=ytick_color,
                            linewidth=group_summary_kwargs['lw'])
         contrast_xtick_labels.append("")#"{}\nminus\n{}".format(current_group,current_control))
-        import pdb;pdb.set_trace()
+
 
 
     # Make sure the contrast_axes x-lims match the rawdata_axes xlims.
