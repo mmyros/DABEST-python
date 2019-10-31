@@ -642,10 +642,9 @@ def EffectSizeDataFramePlotter(EffectSizeDataFrame, **plot_kwargs):
             xlimlow, xlimhigh = axx.get_xlim()
 
             # # Draw reference line.
-            # axx.hlines(ref,            # y-coordinates
-            #            0, xlimhigh,  # x-coordinates, start and end.
-            #            **reflines_kwargs)
-            import pdb;pdb.set_trace()
+            axx.hlines(ref,            # y-coordinates
+                       0, xlimhigh,  # x-coordinates, start and end.
+                       **reflines_kwargs)
             # Draw effect size line.
             axx.hlines(diff, effsize_line_start, xlimhigh,
                        **reflines_kwargs)
@@ -661,9 +660,9 @@ def EffectSizeDataFramePlotter(EffectSizeDataFrame, **plot_kwargs):
                             **redraw_axes_kwargs)
         rawdata_axes.set_ylim(og_ylim_raw)
 
-        contrast_axes.hlines(contrast_axes.get_ylim()[0],
-                             contrast_xlim_max-0.8, contrast_xlim_max,
-                             **redraw_axes_kwargs)
+        # contrast_axes.hlines(contrast_axes.get_ylim()[0],
+        #                      contrast_xlim_max-0.8, contrast_xlim_max,
+        #                      **redraw_axes_kwargs)
 
 
         # For Cumming Plots only.
